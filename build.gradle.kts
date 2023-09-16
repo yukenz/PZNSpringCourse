@@ -13,8 +13,14 @@ java {
 }
 
 configurations {
+    testAnnotationProcessor {
+        extendsFrom(annotationProcessor.get())
+    }
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
+    }
+    testCompileOnly {
+        extendsFrom(configurations.testAnnotationProcessor.get())
     }
 }
 
@@ -25,11 +31,15 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-aop")
-    compileOnly("org.projectlombok:lombok")
-    testCompileOnly("org.projectlombok:lombok")
+
+    //LOMBOK Dependencies
+    annotationProcessor("org.projectlombok:lombok")
+//    compileOnly("org.projectlombok:lombok")
+//    testAnnotationProcessor("org.projectlombok:lombok")
+//    testCompileOnly("org.projectlombok:lombok")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

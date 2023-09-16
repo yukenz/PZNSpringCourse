@@ -1,13 +1,16 @@
 package com.awan.pznspring;
 
-import com.awan.pznspring.configproc.SampleConfigurationProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import com.awan.pznspring.configproc.SampleConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
+
 @SpringBootApplication
+@EnableAspectJAutoProxy //Perlu untuk enable aspectJ
 @EnableConfigurationProperties({
         SampleConfigurationProperties.class
 })
