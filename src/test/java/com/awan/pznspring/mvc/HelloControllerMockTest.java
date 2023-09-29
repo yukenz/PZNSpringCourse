@@ -38,7 +38,10 @@ public class HelloControllerMockTest {
     @BeforeEach
     void setUp() {
         Mockito.when(helloService.hello(Mockito.anyString())).thenAnswer(invocation -> {
-            return invocation.getArgument(0, String.class);
+            return "Hello "+ invocation.getArgument(0, String.class);
+        });
+        Mockito.when(helloService.hello(Mockito.isNull())).thenAnswer(invocation -> {
+            return "Hello Guest";
         });
     }
 

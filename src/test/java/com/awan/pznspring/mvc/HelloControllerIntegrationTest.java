@@ -31,7 +31,7 @@ public class HelloControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        Mockito.when(helloService.hello(Mockito.anyString())).thenReturn("Hello Guys");
+        Mockito.when(helloService.hello(Mockito.nullable(String.class))).thenReturn("Hello Guys");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class HelloControllerIntegrationTest {
 
         assertSame(HttpStatus.OK, statusCode);
         assertNotNull(body);
-        assertEquals("Hello Guest", body.trim());
+        assertEquals("Hello Guys", body.trim());
 
     }
 
@@ -56,7 +56,7 @@ public class HelloControllerIntegrationTest {
 
         assertSame(HttpStatus.OK, statusCode);
         assertNotNull(body);
-        assertEquals("Hello Awan", body.trim());
+        assertEquals("Hello Guys", body.trim());
 
     }
 }

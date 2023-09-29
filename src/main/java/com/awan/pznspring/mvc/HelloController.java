@@ -19,19 +19,8 @@ public class HelloController {
 
     @GetMapping(path = "/hello")
     @ResponseBody
-    public String helloWorld(@RequestParam(name = "name", defaultValue = "") String name) throws IOException {
-
-        /* HttpServletRequest request, HttpServletResponse response */
-        //String name = request.getParameter("name");
-
-        String responseBody = helloService.hello(name);
-
-        if (responseBody.isBlank()) {
-            responseBody = "Guest";
-        }
-
-        /* response.getWriter().println(String.format("Hello %s", responseBody)); */
-        return String.format("Hello %s", responseBody);
+    public String helloWorld(@RequestParam(name = "name", required = false) String name) throws IOException {
+        return helloService.hello(name);
     }
 
 }
